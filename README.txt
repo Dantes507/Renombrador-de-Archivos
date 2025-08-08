@@ -29,11 +29,10 @@ pdf, excel o imágenes, etc...
 #Guia de Uso
 
 1. Colocas los archivos que quieres renombrar en la subcarpeta "Archivos_Originales".
-2. El programa te pide la ruta de origen del script (puedes pasarla durante la ejecución del programa o colocarla directamente en el código).
-3. Comprueba si es la ruta correcta y de no serlo te pide que introduzcas la correcta hasta  que sea introducida la ruta del Script.
-4. Seleccionas la opción de Ordenamiento de los archivos (Nombre o Fecha).
-5. Se ejecuta el ordenamiento, renombra los archivos y los copia en la subcarpeta "Archivos_Renombrados".
-6. Proceso Terminado.
+2. Doble Click sobre el ejecutable ("Renombrador_Archivos_Ejecutable").
+3. Seleccionas la opción de Ordenamiento de los archivos (Nombre o Fecha).
+4. Se ejecuta el ordenamiento, renombra los archivos y los copia en la subcarpeta "Archivos_Renombrados".
+5. Proceso Terminado.
 
 
 Extra : 
@@ -55,4 +54,4 @@ Proyecto Realizado como Practica de Automatización para crecer como programador
 
 David Ortega
 
-Versión 1.1.0
+Versión 1.2.1
