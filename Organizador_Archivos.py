@@ -6,7 +6,7 @@ ruta =os.getcwd()
 try:
     #Carpetas a usar
     entrada = os.path.join(ruta,"Archivos_Originales")
-    salida = os.path.join(ruta,"Archivos_Renombrados")
+    salida = os.path.join(ruta,"Archivos_Organizados")
     #Con esto cambiamos la ruta en la que el script se ejecutara o la carpeta en la que buscara los archivos a renombrar
     os.chdir(entrada)
     #Imprimir el contenido de esa ruta, archivos, carpetas, etc...
@@ -35,11 +35,8 @@ try:
     if opcion == "3":
         print("\n\n Saliste del Progama...")
     else:
-        #variable auxiliar que sirve de contador para la impresion de Cliente 1,2,3,etc...
-        i=0
-        #Se plantea la base del renombre de archivos y el tipo de archivo / extension
-        formatoBase = "Cliente_"
-        tipoArchivo = ".pdf"
+        #Diccionario con los tipos de extension a manejar
+        tipoArchivo = {".pdf": "PDF",".docx": "WORD",".xlsx": "Excel",".csv": "CSV",".jpg": "JPG",".png": "PNG"}
         #Creacion de la carpeta donde se copiaron los archivos de ser necesario
         if os.path.exists(salida) == False:
             os.makedirs(salida)
@@ -47,14 +44,30 @@ try:
         #Recorre la ruta, recibiendo en la variable archivo el nombre sus elementos
         for archivo in archivos:
             #Comprobamos si el elemento actual es un archivo o no para avanzar a la siguiente evaluacion, ya que solo interesa trabajar con archivos
-            if os.path.isfile(archivo):
-                #Comprobamos si el archivo es del tipo que se pide ya que es unico formato que se usara en el script
-                if archivo.endswith(tipoArchivo):
-                    #Se copian los archivos y se les cambia el nombre
-                    shutil.copy(archivo, os.path.join(salida, (formatoBase + str((i+1)) + tipoArchivo)))
-                    i+=1
-        #Muestra el resultado final de los elementos en la ruta
-        print("\n Archivos Renombados y Ordenados : \n\n ", os.listdir(salida),"\n\n Proceso Finalizado...")
+            if os.path.isfile(archivo):           
+                #Recorrido de los tipos de extensiones a comparar
+                for tipo in tipoArchivo.keys():
+                   #Comprueba si el archivo es de un tipo que maneja en el script
+                    if  archivo.endswith(tipo):
+                        #Obtiene la ruta de la carpeta donde se guardaria el archivo segun el tipo de extension
+                        carpetaTipo = os.path.join(salida,tipoArchivo[tipo])
+                        #Si la carpeta no existe la crea
+                        if os.path.exists(carpetaTipo) == False:
+                            os.makedirs(carpetaTipo)
+                        #Se mueve el archivo a su respectiva carpeta
+                        if os.path.exists(os.path.join(carpetaTipo,archivo)):
+                            print("\n El archivo ", archivo, " Existe dentro de la carpeta ", tipoArchivo[tipo], " se omitira...")
+                            continue
+                        else:
+                            shutil.move(archivo, os.path.join(carpetaTipo,archivo))
+        
+        #Muestra el contenido de las carpetas segun las extensiones
+        for nombreCarpeta, subCarpeta, nombreArchivo in os.walk(salida):
+            #Muesta el nombre de la carpeta actual
+            carpeta = os.path.basename(nombreCarpeta)
+            #Imprime el archivo de esa carpeta
+            print("\n",carpeta,": ",str(nombreArchivo))
+        print("\n\n Proceso Finalizado...")
 
 except:
     #Imprimir mensaje en caso de que la ruta este mal escrita o no exista
