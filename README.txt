@@ -3,15 +3,16 @@
 
 #Este script de Python renombra automáticamente todos los archivos dentro de una carpeta
 y los copia a otra aplicando un formato simple que se puede utilizar para documentos,
-pdf, excel o imágenes
+pdf, excel o imágenes, etc...
 
 
 #Funcionamiento
 
 1. Lee los archivos de la subcarpeta "Archivos_Originales".
-2. Discrimina por el tipo de extensión que se le pide
-3. Renombra los archivos con el formato simple indicado
-4. Guarda los archivos copiados y renombrados en la subcarpeta "Archivos_Renombrados". 
+2. Ordena los archivos por Nombre o Fecha.
+3. Discrimina por el tipo de extensión que se le pide
+4. Renombra los archivos con el formato simple indicado
+5. Guarda los archivos copiados y renombrados en la subcarpeta "Archivos_Renombrados". 
 
 
 #Requisitos
@@ -28,18 +29,23 @@ pdf, excel o imágenes
 #Guia de Uso
 
 1. Colocas los archivos que quieres renombrar en la subcarpeta "Archivos_Originales".
-2. Colocas la ruta donde esta el programa de ejecución del script en la variable "ruta".
-3. (Opcional)Cambias el Formato de renombre que tiene de base "Cliente_" en la variable "formato_Base" y/o
-cambias el tipo de extensión que deseas usar(pdf, png, docs, etc...).
-4. Ejecutas el script y ya tienes tus archivos renombrados, ordenados y copiados en la subcarpeta "Archivos_Renombrados". 
+2. El programa te pide la ruta de origen del script (puedes pasarla durante la ejecución del programa o colocarla directamente en el código).
+3. Comprueba si es la ruta correcta y de no serlo te pide que introduzcas la correcta hasta  que sea introducida la ruta del Script.
+4. Seleccionas la opción de Ordenamiento de los archivos (Nombre o Fecha).
+5. Se ejecuta el ordenamiento, renombra los archivos y los copia en la subcarpeta "Archivos_Renombrados".
+6. Proceso Terminado.
 
-Extra : El Proyecto viene con unos archivos para ser probado.
+
+Extra : 
+
+1. El Proyecto viene con unos archivos para ser probado.
+2. El formato de renombre puede ser modificado en el código igual que el tipo de extensión.
 
 
 
 #Actualizaciones Posibles
 
-- Identificar varios tipos de extensiones a la vez, renombrarlos y guardarlos en subcarpetas especificas.
+- Identificar varios tipos de extensiones a la vez, renombrarlos y/o guardarlos en subcarpetas especificas.
 - Implementar interfaz amigable con el usuario
 
 
@@ -49,3 +55,4 @@ Proyecto Realizado como Practica de Automatización para crecer como programador
 
 David Ortega
 
+Versión 1.1.0
